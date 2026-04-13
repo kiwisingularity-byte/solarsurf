@@ -1,0 +1,582 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Solar Surf — Mount Maunganui Surfboard Repairs">
+  <!-- Hero -->
+  <section class="hero">
+    <img src="/images/hero-surfing.jpg" alt="Surfer riding a wave" class="hero-bg" />
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <span class="hero-badge">⭐ 5.0 — 23 Google Reviews</span>
+      <h1>Mount Maunganui's<br/>Trusted Board Repairs</h1>
+      <p class="hero-sub">Fast repairs. Quality work. Fair prices.<br/>20+ years of experience getting you back in the water.</p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Get a Quote</a>
+        <a href="tel:+64275888082" class="btn btn-outline">📞 027 5888 082</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">What We Fix</h2>
+      <p class="section-sub">From small dings to full restorations — we handle it all with care.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🔧</span>
+          <h3>Ding Repairs</h3>
+          <p>Dings, gauges, punctures, slices — any damage your board's taken, we'll fix it right.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🌊</span>
+          <h3>All Board Types</h3>
+          <p>Surfboards, SUPs, fibreglass watercraft — we work on them all. Custom solutions for every board.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🏄‍♂️</span>
+          <h3>Full Restorations</h3>
+          <p>Major damage or botched repairs? We clean up bad epoxy work and make boards look new again.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">✨</span>
+          <h3>Fast Turnaround</h3>
+          <p>Same-day and overnight repairs available. We quote before we start — no surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story" id="story">
+    <div class="container story-inner">
+      <div class="story-text">
+        <span class="story-label">Since 1974</span>
+        <h2>The Mount's Original Surf Shop</h2>
+        <p>In 1974, the Mount's very first surfshop — <strong>Solar Surfshop</strong> — opened its doors. Mike shaped the boards, Mum made Balinese clothes, and a legacy was born.</p>
+        <p>Today, CJ and Mike carry on that tradition — a father-and-son operation with decades of experience. CJ was the first person to run a Mount Maunganui surf school, and he's been fixing boards for over 20 years.</p>
+        <p>When you bring your board to Solar Surf, you're putting it in the hands of people who live and breathe the Mount surf culture.</p>
+      </div>
+      <div class="story-visual">
+        <img src="/images/cj-working.jpg" alt="CJ working on a surfboard repair" class="story-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Our Work</h2>
+      <p class="section-sub">Real repairs. Real results. From damaged to mint.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="/images/before-repair.jpg" alt="Surfboard with damaged rail before repair" />
+          <span class="gallery-label">Before</span>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/after-repair.jpg" alt="Surfboard after repair - clean and restored" />
+          <span class="gallery-label">After</span>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/workshop-real.jpg" alt="Solar Surf workshop with tools and resin" />
+          <span class="gallery-label">The Workshop</span>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/workshop-boards.jpg" alt="Boards hanging in the workshop" />
+          <span class="gallery-label">Ready to Ride</span>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/board-finished.jpg" alt="Finished surfboard with beautiful colour work" />
+          <span class="gallery-label">Colour Match</span>
+        </div>
+        <div class="gallery-item">
+          <img src="/images/board-clean.jpg" alt="Clean repaired surfboard" />
+          <span class="gallery-label">Like New</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="video-section" id="video">
+    <div class="container">
+      <h2 class="section-title">See It In Action</h2>
+      <p class="section-sub">Watch a repair happen — real work, real results.</p>
+      <div class="video-wrap">
+        <video controls playsinline preload="metadata" poster="/images/workshop-real.jpg">
+          <source src="/videos/repair-process.mp4" type="video/mp4" />
+          Your browser doesn't support video.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title">What People Say</h2>
+      <div class="reviews-rating">
+        <span class="stars">⭐⭐⭐⭐⭐</span>
+        <span class="rating-text"><strong>5.0</strong> from 23 Google reviews</span>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p class="review-text">"Dropped my board off at 9am and it was done by 1pm. Fantastic job."</p>
+          <span class="review-author">— Sean Collins</span>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Excellent repair without any traces of a repair. They even covered other little scratches with paint."</p>
+          <span class="review-author">— Fionn Gartlan</span>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"CJ is super friendly and nothing is a problem. He cleaned up bad epoxy work. The board looks like new again."</p>
+          <span class="review-author">— Clous</span>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Unreal service, professional repair and 24hr turn around! Don't get that with other ding repairs."</p>
+          <span class="review-author">— Lee Williamson</span>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Awesome service. My longboard looks like new now and stronger. They perfectly matched the colours as well."</p>
+          <span class="review-author">— Sol Almonacid</span>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Speedy, professional and friendly! Dropped it off in the morning and by mid-afternoon I had my board back, looking mint."</p>
+          <span class="review-author">— Shirley Ewing</span>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/place/Solar+Surf+Board+Repairs/@-37.6487,176.1625" class="reviews-link" target="_blank" rel="noopener">See all 23 reviews on Google →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <img src="/images/beach-sunrise.jpg" alt="Beach at sunrise" class="cta-bg" />
+    <div class="cta-overlay"></div>
+    <div class="container cta-inner">
+      <h2>Damaged your board?</h2>
+      <p>Get it fixed fast by the Mount's most trusted repair team.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary btn-lg">Get a Quote</a>
+        <a href="tel:+64275888082" class="btn btn-outline btn-lg">📞 Call Now</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    color: white;
+    padding: 120px 0 100px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(12,74,110,0.85) 0%, rgba(2,132,199,0.7) 50%, rgba(3,105,161,0.8) 100%);
+  }
+
+  .hero-inner { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background: var(--sun);
+    color: var(--gray-900) !important;
+  }
+
+  .btn-primary:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+    color: var(--gray-900) !important;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white !important;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+    color: white !important;
+  }
+
+  .btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 0 70px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-sub { font-size: 1rem; }
+    .btn { padding: 12px 24px; font-size: 0.95rem; }
+    .btn-lg { padding: 14px 28px; }
+  }
+
+  /* Services */
+  .services {
+    padding: 80px 0;
+    background: var(--white);
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--gray-900);
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--gray-600);
+    margin-bottom: 48px;
+    font-size: 1.1rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .service-icon { font-size: 2.5rem; display: block; margin-bottom: 16px; }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gray-900);
+  }
+
+  .service-card p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .service-card { padding: 24px 16px; }
+    .section-title { font-size: 1.7rem; }
+  }
+
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Story */
+  .story {
+    padding: 80px 0;
+    background: var(--foam);
+  }
+
+  .story-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .story-label {
+    display: inline-block;
+    background: var(--ocean);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .story-text h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--deep);
+  }
+
+  .story-text p {
+    margin-bottom: 16px;
+    line-height: 1.7;
+    color: var(--gray-700);
+  }
+
+  .story-visual {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  .story-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 320px;
+  }
+
+  @media (max-width: 768px) {
+    .story-inner { grid-template-columns: 1fr; gap: 32px; }
+    .story-text h2 { font-size: 1.7rem; }
+    .story-img { min-height: 240px; }
+  }
+
+  /* Reviews */
+  .reviews {
+    padding: 80px 0;
+    background: var(--white);
+  }
+
+  /* Gallery */
+  .gallery {
+    padding: 80px 0;
+    background: var(--gray-50);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Video */
+  .video-section {
+    padding: 80px 0;
+    background: var(--white);
+  }
+
+  .video-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  .video-wrap video {
+    width: 100%;
+    display: block;
+  }
+
+  /* Reviews */
+  .reviews {
+    padding: 80px 0;
+    background: var(--gray-50);
+  }
+
+  .reviews-rating {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .stars { font-size: 1.5rem; margin-right: 8px; }
+
+  .rating-text {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .review-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-100);
+    border-radius: 14px;
+    padding: 24px;
+    transition: transform 0.2s;
+  }
+
+  .review-card:hover { transform: translateY(-2px); }
+
+  .review-text {
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: var(--gray-700);
+  }
+
+  .review-author {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ocean);
+  }
+
+  .reviews-link {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+
+  /* CTA */
+  .cta {
+    position: relative;
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .cta-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(12,74,110,0.88) 0%, rgba(2,132,199,0.75) 100%);
+  }
+
+  .cta-inner { position: relative; z-index: 1; }
+
+  .cta h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .cta p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .cta h2 { font-size: 1.8rem; }
+    .cta { padding: 60px 0; }
+  }
+</style>

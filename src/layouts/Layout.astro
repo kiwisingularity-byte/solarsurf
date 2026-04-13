@@ -1,0 +1,307 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast, professional, affordable — since 1974.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0c4a6e" />
+  <link rel="canonical" href={Astro.url.href} />
+  <title>{title}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:site_name" content="Solar Surf" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep: #0c4a6e;
+      --ocean: #0284c7;
+      --foam: #e0f2fe;
+      --sand: #fef3c7;
+      --sun: #f59e0b;
+      --sun-hot: #ea580c;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      line-height: 1.2;
+    }
+
+    a { color: var(--ocean); text-decoration: none; }
+    a:hover { color: var(--deep); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-icon">🏄</span>
+        <span>Solar Surf</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#story">Our Story</a>
+        <a href="/#reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 Instagram</a>
+      </div>
+      <a href="/contact" class="nav-cta">Get a Quote</a>
+      <button class="nav-toggle" aria-label="Menu" id="nav-toggle">☰</button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="/#services">Services</a>
+      <a href="/#story">Our Story</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/contact">Contact</a>
+        <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="/contact" class="nav-cta">Get a Quote</a>
+    </div>
+  </nav>
+
+  <slot />
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">🏄 Solar Surf</span>
+        <p>Quality board repairs since 1974.<br />Mount Maunganui, New Zealand.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="/#services">Services</a>
+        <a href="/#story">Our Story</a>
+        <a href="/#reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Find Us</h4>
+        <p>Unit 8, 21 MacDonald St<br />Mount Maunganui 3116</p>
+        <p><a href="tel:+64275888082">027 5888 082</a></p>
+        <p><a href="mailto:maunganui@me.com">maunganui@me.com</a></p>
+        <p><a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 @solarsurfnz</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Solar Surf Board Repairs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const mobile = document.getElementById('nav-mobile');
+    if (toggle && mobile) {
+      toggle.addEventListener('click', () => {
+        mobile.classList.toggle('open');
+        toggle.textContent = mobile.classList.contains('open') ? '✕' : '☰';
+      });
+      // Close on link click
+      mobile.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobile.classList.remove('open');
+          toggle.textContent = '☰';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 24px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--deep);
+  }
+
+  .nav-logo:hover { color: var(--ocean); }
+
+  .nav-logo-icon { font-size: 1.5rem; }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    color: var(--gray-700);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ocean); }
+
+  .nav-cta {
+    background: var(--ocean);
+    color: var(--white) !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--deep) !important; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-800);
+  }
+
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    gap: 16px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .nav-mobile.open { display: flex; }
+
+  .nav-mobile a {
+    color: var(--gray-700);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 8px 0;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: block; }
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--gray-900);
+    color: var(--gray-50);
+    padding: 64px 0 0;
+    margin-top: 0;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  .footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+  }
+
+  .footer-brand p, .footer-contact p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  .footer-contact a, .footer-links a {
+    color: var(--gray-600);
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover, .footer-links a:hover {
+    color: var(--ocean);
+  }
+
+  .footer h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-links a { font-size: 0.9rem; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 48px;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>
