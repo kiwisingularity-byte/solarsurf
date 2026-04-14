@@ -76,7 +76,7 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
   <nav class="nav">
     <div class="container nav-inner">
       <a href="/solarsurf/" class="nav-logo">
-        <span class="nav-logo-icon">🏄</span>
+        <img src="/solarsurf/images/logo.png" alt="Solar Surf logo" class="nav-logo-img" />
         <span>Solar Surf</span>
       </a>
       <div class="nav-links">
@@ -104,7 +104,7 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="footer-logo">🏄 Solar Surf</span>
+        <img src="/solarsurf/images/logo.png" alt="Solar Surf logo" class="footer-logo-img" />
         <p>Quality board repairs since 1974.<br />Mount Maunganui, New Zealand.</p>
       </div>
       <div class="footer-links">
@@ -177,7 +177,11 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
 
   .nav-logo:hover { color: var(--ocean); }
 
-  .nav-logo-icon { font-size: 1.5rem; }
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
 
   .nav-links {
     display: flex;
@@ -251,10 +255,11 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
     gap: 48px;
   }
 
-  .footer-logo {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
+  .footer-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 12px;
   }
 
   .footer-brand p, .footer-contact p {
