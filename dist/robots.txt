@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://solarsurf.co.nz/sitemap.xml
+
+# Crawl delay (optional, be nice to server)
+Crawl-delay: 1
