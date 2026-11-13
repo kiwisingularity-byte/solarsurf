@@ -1,0 +1,717 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Chatbot Demo — Solar Surf Board Repairs">
+  <!-- Chatbot Demo Hero -->
+  <section class="demo-hero">
+    <div class="container">
+      <h1>🤖 Solar Surf AI Assistant</h1>
+      <p>A live demo of an AI chatbot for local businesses. Ask anything about Solar Surf board repairs — hours, pricing, location, services, or the story behind the shop.</p>
+      <p class="demo-tag">This is what your customers could talk to. Powered by your own site content.</p>
+    </div>
+  </section>
+
+  <!-- Chatbot Demo -->
+  <section class="demo-chat">
+    <div class="container chat-layout">
+      <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <span class="chat-avatar">🏄</span>
+            <div>
+              <span class="chat-name">Solar Surf Assistant</span>
+              <span class="chat-status">Online • Answers from our site</span>
+            </div>
+          </div>
+          <button class="chat-clear" id="chat-clear" title="Clear chat">🗑️</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="message bot">
+            <div class="message-avatar">🏄</div>
+            <div class="message-content">
+              <p>Hey! 👋 I'm the Solar Surf AI assistant. Ask me anything about our board repairs, hours, pricing, or story. Here's some things you can ask:</p>
+              <div class="suggestions">
+                <button class="suggestion-chip" data-q="What are your hours?">What are your hours?</button>
+                <button class="suggestion-chip" data-q="Where are you located?">Where are you located?</button>
+                <button class="suggestion-chip" data-q="What services do you offer?">What services do you offer?</button>
+                <button class="suggestion-chip" data-q="How much do repairs cost?">How much do repairs cost?</button>
+                <button class="suggestion-chip" data-q="Tell me the story of Solar Surf">Tell me the story</button>
+                <button class="suggestion-chip" data-q="What do customers say?">What do customers say?</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-wrap">
+          <input type="text" class="chat-input" id="chat-input" placeholder="Ask about Solar Surf..." autocomplete="off" />
+          <button class="chat-send" id="chat-send">➤</button>
+        </div>
+        <div class="chat-footer">
+          Powered by your site content + local AI. No third-party APIs.
+        </div>
+      </div>
+
+      <div class="chat-sidebar">
+        <div class="sidebar-card">
+          <h3>💡 How It Works</h3>
+          <ol>
+            <li><strong>Scrape</strong> — We grab all your website content</li>
+            <li><strong>Index</strong> — Your info is stored as searchable knowledge</li>
+            <li><strong>Answer</strong> — Customers ask questions, AI responds from your content</li>
+          </ol>
+        </div>
+        <div class="sidebar-card">
+          <h3>⚡ What You Get</h3>
+          <ul>
+            <li>✅ Embed on any website (1 script tag)</li>
+            <li>✅ Answers only from YOUR content</li>
+            <li>✅ No hallucinations about competitors</li>
+            <li>✅ Works on phone, tablet, desktop</li>
+          </ul>
+        </div>
+        <div class="sidebar-card pricing-card">
+          <h3>💰 Pricing</h3>
+          <div class="pricing-tier">
+            <span class="tier-name">Starter</span>
+            <span class="tier-price">$29<span>/mo</span></span>
+            <span class="tier-desc">Info from your site + Google Business</span>
+          </div>
+          <div class="pricing-tier pro">
+            <span class="tier-name">Pro</span>
+            <span class="tier-price">$49<span>/mo</span></span>
+            <span class="tier-desc">+ Lead capture form, up to 100 responses</span>
+          </div>
+          <div class="pricing-tier extra">
+            <span class="tier-name">Extra</span>
+            <span class="tier-price">+$10</span>
+            <span class="tier-desc">Per additional 100 response credits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .demo-hero {
+      padding: 100px 0 60px;
+      background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #0369a1 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .demo-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .demo-hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 650px;
+      margin: 0 auto 8px;
+      line-height: 1.6;
+    }
+
+    .demo-tag {
+      font-size: 0.95rem !important;
+      opacity: 0.7 !important;
+      font-style: italic;
+      margin-top: 16px !important;
+    }
+
+    @media (max-width: 768px) {
+      .demo-hero { padding: 60px 0 40px; }
+      .demo-hero h1 { font-size: 1.8rem; }
+    }
+
+    /* Chat Layout */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .chat-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Chat Container */
+    .chat-container {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      min-height: 500px;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      background: #0c4a6e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-avatar {
+      font-size: 1.8rem;
+    }
+
+    .chat-name {
+      font-weight: 700;
+      font-size: 1rem;
+      display: block;
+    }
+
+    .chat-status {
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    .chat-clear {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .chat-clear:hover {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      max-height: 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .message {
+      display: flex;
+      gap: 10px;
+      animation: fadeUp 0.3s ease;
+      max-width: 90%;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .message-avatar {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border-radius: 50%;
+    }
+
+    .message.user .message-avatar {
+      background: #0284c7;
+    }
+
+    .message-content {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      border-top-left-radius: 4px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #1e293b;
+    }
+
+    .message.user .message-content {
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 16px;
+    }
+
+    .message-content p {
+      margin-bottom: 8px;
+    }
+
+    .message-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .message-content strong {
+      font-weight: 700;
+    }
+
+    .message-content ul {
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+
+    .message-content li {
+      margin-bottom: 4px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 6px;
+      padding: 8px 0;
+    }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #94a3b8;
+      border-radius: 50%;
+      animation: pulse 1.2s ease infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    /* Suggestions */
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .suggestion-chip {
+      background: #e0f2fe;
+      color: #0c4a6e;
+      border: 1px solid #bae6fd;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .suggestion-chip:hover {
+      background: #bae6fd;
+      border-color: #0284c7;
+    }
+
+    /* Chat Input */
+    .chat-input-wrap {
+      display: flex;
+      padding: 12px 16px;
+      border-top: 1px solid #e2e8f0;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2,132,199,0.1);
+    }
+
+    .chat-send {
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      width: 44px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .chat-send:hover {
+      background: #0c4a6e;
+    }
+
+    .chat-input:disabled,
+    .chat-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .chat-footer {
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    /* Sidebar */
+    .chat-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    .sidebar-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #0c4a6e;
+    }
+
+    .sidebar-card ol,
+    .sidebar-card ul {
+      padding-left: 20px;
+    }
+
+    .sidebar-card li {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .sidebar-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .pricing-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, white 50%, #fef3c7 100%);
+      border-color: #bae6fd;
+    }
+
+    .pricing-tier {
+      padding: 12px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .pricing-tier:last-child {
+      border-bottom: none;
+    }
+
+    .tier-name {
+      font-weight: 700;
+      color: #0c4a6e;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .tier-price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .tier-price span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+
+    .tier-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .pricing-tier.pro {
+      background: #e0f2fe;
+      margin: 0 -24px;
+      padding: 12px 24px;
+    }
+
+    .pricing-tier.extra {
+      border: none;
+    }
+  </style>
+
+  <script>
+    (function() {
+      // ── Solar Surf Knowledge Base ──
+      const KB = {
+        business: {
+          name: "Solar Surf Board Repairs",
+          tagline: "Mount Maunganui's Trusted Board Repairs",
+          rating: "5.0",
+          reviewCount: "23",
+          description: "Quality surfboard repairs in Mount Maunganui. Fast, professional, affordable — since 1974."
+        },
+        services: [
+          { name: "Ding Repairs", description: "Dings, gauges, punctures, slices — any damage your board's taken." },
+          { name: "All Board Types", description: "Surfboards, SUPs, fibreglass watercraft — we work on them all." },
+          { name: "Full Restorations", description: "Major damage or botched repairs cleaned up. Boards look like new again." },
+          { name: "Fast Turnaround", description: "Same-day and overnight repairs available. We quote before we start — no surprises." }
+        ],
+        contact: {
+          address: "Unit 8, 21 MacDonald Street, Mount Maunganui 3116",
+          phone: "027 5888 082",
+          email: "mountmaunganui@me.com",
+          hours: "Monday to Friday: 9:30am – 1pm",
+          note: "Pickups & drop-offs 7 days to Mike in Unit 9. 9:30am – 4pm (call to check if the surf's up!)",
+          quoteNote: "We always quote before starting work — no surprises."
+        },
+        location: "Unit 8, 21 MacDonald Street, Mount Maunganui 3116. About 5 minutes from Omanu Beach.",
+        story: "In 1974, the Mount's very first surfshop — Solar Surfshop — opened its doors. Mike shaped the boards, Mum made Balinese clothes, and a legacy was born. Today, CJ and Mike carry on that tradition — a father-and-son operation with decades of experience. CJ was the first person to run a Mount Maunganui surf school, and he's been fixing boards for over 20 years. When you bring your board to Solar Surf, you're putting it in the hands of people who live and breathe the Mount surf culture.",
+        prices: "We quote before we start work — no surprises. Pricing varies depending on damage type, board size, and complexity. Give us a call at 027 5888 082 or swing by with your board for a free quote. Same-day and overnight repairs available.",
+        reviews: [
+          { text: "\"Dropped my board off at 9am and it was done by 1pm. Fantastic job.\"", author: "— Sean Collins" },
+          { text: "\"Excellent repair without any traces of a repair. They even covered other little scratches with paint.\"", author: "— Fionn Gartlan" },
+          { text: "\"CJ is super friendly and nothing is a problem. He cleaned up bad epoxy work. The board looks like new again.\"", author: "— Clous" },
+          { text: "\"Unreal service, professional repair and 24hr turn around! Don't get that with other ding repairs.\"", author: "— Lee Williamson" },
+          { text: "\"Awesome service. My longboard looks like new now and stronger. They perfectly matched the colours as well.\"", author: "— Sol Almonacid" },
+          { text: "\"Speedy, professional and friendly! Dropped it off in the morning and by mid-afternoon I had my board back, looking mint.\"", author: "— Shirley Ewing" }
+        ],
+        instagram: "@solarsurfnz",
+        usefulLinks: [
+          { name: "Sunshine Healing Physiotherapy", desc: "Surf-informed physio focused on movement, strength, and flow.", url: "https://sunshinehealing.co.nz/" },
+          { name: "Surfline", desc: "Surf reports, forecasts, and cam feeds.", url: "https://www.surfline.com" },
+          { name: "MetService Tides — Mount Maunganui", desc: "Tide times for the Mount.", url: "https://www.metservice.com/marine/tides/mount-maunganui" },
+          { name: "MetService Marine Forecast", desc: "Bay of Plenty marine forecast.", url: "https://www.metservice.com/marine/marine-forecasts/bay-of-plenty" }
+        ]
+      };
+
+      // ── Match Engine ──
+      function normalize(s) {
+        return s.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+      }
+
+      function findBestAnswer(query) {
+        const q = normalize(query);
+        
+        // Keywords to answer mapping
+        const rules = [
+          // Hours
+          { keywords: ['hour', 'open', 'time', 'when', 'close', '9:30', '1pm'], 
+            answer: () => `**Hours:** ${KB.contact.hours}\n\n**Pickups & Drop-offs:** Available 7 days to Mike in Unit 9, 9:30am – 4pm (call to check if the surf's up 🏄♂️)\n\nWe always quote before starting work — no surprises!` },
+
+          // Location / address
+          { keywords: ['where', 'address', 'location', 'find', 'map', 'directions', 'macdonald', 'unit'],
+            answer: () => `📍 **Address:** ${KB.location}\n\nWe're about 5 minutes from Omanu Beach. Easy walk or drive from the Mount surf breaks.\n\n📞 Call 027 5888 082 if you need help finding us.` },
+
+          // Phone
+          { keywords: ['phone', 'call', 'number', 'contact', '027', 'reach'],
+            answer: () => `📞 **Call or text:** 027 5888 082\n\nOr email: ${KB.contact.email}\n\nWe're happy to answer questions over the phone. Swing by with your board for a free quote!` },
+
+          // Services
+          { keywords: ['service', 'fix', 'repair', 'ding', 'restore', 'offer', 'do you', 'what can'],
+            answer: () => `**What We Fix:**\n\n${KB.services.map(s => `• **${s.name}** — ${s.description}`).join('\n\n')}\n\nWe work on surfboards, SUPs, fibreglass watercraft, and more. Fast turnaround — same-day available!` },
+
+          // Pricing / cost
+          { keywords: ['price', 'cost', 'how much', 'fee', 'cheap', 'expensive', 'pricing', 'quote', 'pay'],
+            answer: () => `**Pricing:** ${KB.prices}\n\nWe always quote before starting work — no surprises, no hidden fees. Same-day and overnight repairs available at no extra rush charge.` },
+
+          // Story / history
+          { keywords: ['story', 'history', 'who', 'start', '1974', 'legacy', 'begin', 'found', 'father', 'son', 'c j', 'mike', 'family'],
+            answer: () => `**Our Story:**\n\n${KB.story}` },
+
+          // Reviews / reputation
+          { keywords: ['review', 'rating', 'google', 'stars', 'people say', 'testimonial', 'what do customer', 'what people', 'is it good'],
+            answer: () => `**⭐⭐⭐⭐⭐ ${KB.business.rating} from ${KB.business.reviewCount} Google reviews**\n\nHere's what customers say:\n\n${KB.reviews.slice(0, 3).map(r => `${r.text}\n${r.author}`).join('\n\n')}\n\n[See all reviews on Google →](https://www.google.com/maps/place/Solar+Surf+Board+Repairs/@-37.6487,176.1625)` },
+
+          // Instagram / social
+          { keywords: ['instagram', 'social', 'photo', 'follow', '@'],
+            answer: () => `Follow us on Instagram: **${KB.instagram}**\n\nWe post repair work, before/after shots, and Mount surf culture. DM us about your board!` },
+
+          // Turnaround time
+          { keywords: ['how long', 'turnaround', 'same day', 'overnight', 'fast', 'quick', 'speed', 'day', 'when ready'],
+            answer: () => `**Turnaround:** Fast! Most repairs are done same-day or overnight.\n\n• Small dings: often ready in a few hours\n• Larger repairs: typically 24-48 hours\n• Big restorations: ask for a timeframe\n\nWe quote before we start and tell you exactly when it'll be ready.` },
+
+          // Board types
+          { keywords: ['surfboard', 'sup', 'stand up', 'longboard', 'shortboard', 'foam', 'epoxy', 'fiberglass', 'fibreglass', 'type of board', 'all board'],
+            answer: () => `**Boards we work on:**\n\n• Surfboards (shortboards, longboards, funboards, mini-mals)\n• SUPs (stand up paddle boards)\n• Fibreglass watercraft\n• Epoxy and polyester resin boards\n\nIf it floats and you surf it, we can probably fix it. Bring it in and we'll take a look!` },
+
+          // Useful links
+          { keywords: ['link', 'recommend', 'physio', 'healing', 'surfline', 'tide', 'weather', 'forecast', 'sunshine'],
+            answer: () => `**Useful Links:**\n\n${KB.usefulLinks.map(l => `• [${l.name}](${l.url}) — ${l.desc}`).join('\n')}\n\nSee all links at [solarsurf.co.nz/links](http://192.168.68.57:8080/links/)` },
+
+          // Contact (general)
+          { keywords: ['email', 'message', 'get in touch'],
+            answer: () => `📍 **Address:** ${KB.contact.address}\n📞 **Phone:** ${KB.contact.phone}\n✉️ **Email:** ${KB.contact.email}\n🕐 **Hours:** ${KB.contact.hours}\n\nWe always quote before starting work. Drop off your board, give us a call, or send an email!` }
+        ];
+
+        // Score each rule by how many keywords match
+        let best = null;
+        let bestScore = 0;
+
+        for (const rule of rules) {
+          let score = 0;
+          for (const kw of rule.keywords) {
+            if (q.includes(kw)) score++;
+          }
+          if (score > 0) {
+            // Bonus for exact phrase match
+            if (rule.keywords.some(kw => q.includes(kw) && kw.length > 4)) score += 0.5;
+            if (score > bestScore) {
+              bestScore = score;
+              best = rule;
+            }
+          }
+        }
+
+        if (best) return best.answer();
+
+        // Default responses
+        const defaults = [
+          `Hmm, I'm not sure about that specifically. Here's what I can tell you about Solar Surf:\n\n${KB.business.description}\n\n📍 ${KB.location}\n📞 ${KB.contact.phone}\n🕐 ${KB.contact.hours}\n\nTry asking about services, pricing, hours, or our story!`,
+          
+          `I don't have that info handy, but here's what I do know:\n\n**${KB.business.name}** — ${KB.business.description}\n\n📍 ${KB.location}\n📞 ${KB.contact.phone}\n\nFeel free to give us a call for anything specific!`,
+          
+          `Good question! I'm not 100% sure on that one. Here's what I can help with:\n\n• Services & repairs\n• Hours & location\n• Pricing & quotes\n• Our story & reviews\n• Turnaround times\n\nOr give CJ a call at **027 5888 082** — he'll sort you out!`
+        ];
+
+        return defaults[Math.floor(Math.random() * defaults.length)];
+      }
+
+      // ── UI ──
+      const messagesEl = document.getElementById('chat-messages');
+      const inputEl = document.getElementById('chat-input');
+      const sendBtn = document.getElementById('chat-send');
+      const clearBtn = document.getElementById('chat-clear');
+
+      function addMessage(text, isUser = false) {
+        const div = document.createElement('div');
+        div.className = `message ${isUser ? 'user' : 'bot'}`;
+        div.innerHTML = `
+          <div class="message-avatar">${isUser ? '👤' : '🏄'}</div>
+          <div class="message-content">${text}</div>
+        `;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function showTyping() {
+        const div = document.createElement('div');
+        div.className = 'message bot';
+        div.id = 'typing-indicator';
+        div.innerHTML = `
+          <div class="message-avatar">🏄</div>
+          <div class="message-content">
+            <div class="typing-indicator">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+          </div>
+        `;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function hideTyping() {
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+      }
+
+      function handleQuery(query) {
+        if (!query.trim()) return;
+        
+        addMessage(query, true);
+        inputEl.value = '';
+        inputEl.disabled = true;
+        sendBtn.disabled = true;
+
+        showTyping();
+
+        // Simulate thinking delay (realistic feel)
+        const delay = 600 + Math.random() * 800;
+        setTimeout(() => {
+          hideTyping();
+          const answer = findBestAnswer(query);
+          addMessage(answer);
+          inputEl.disabled = false;
+          sendBtn.disabled = false;
+          inputEl.focus();
+        }, delay);
+      }
+
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleQuery(inputEl.value);
+      });
+
+      sendBtn.addEventListener('click', () => handleQuery(inputEl.value));
+
+      clearBtn.addEventListener('click', () => {
+        messagesEl.innerHTML = '';
+        // Re-add welcome message
+        const welcome = document.createElement('div');
+        welcome.className = 'message bot';
+        welcome.innerHTML = `
+          <div class="message-avatar">🏄</div>
+          <div class="message-content">
+            <p>Hey! 👋 I'm the Solar Surf AI assistant. Ask me anything about our board repairs, hours, pricing, or story. Here's some things you can ask:</p>
+            <div class="suggestions">
+              <button class="suggestion-chip" data-q="What are your hours?">What are your hours?</button>
+              <button class="suggestion-chip" data-q="Where are you located?">Where are you located?</button>
+              <button class="suggestion-chip" data-q="What services do you offer?">What services do you offer?</button>
+              <button class="suggestion-chip" data-q="How much do repairs cost?">How much do repairs cost?</button>
+              <button class="suggestion-chip" data-q="Tell me the story of Solar Surf">Tell me the story</button>
+              <button class="suggestion-chip" data-q="What do customers say?">What do customers say?</button>
+            </div>
+          </div>
+        `;
+        messagesEl.appendChild(welcome);
+        inputEl.focus();
+      });
+
+      // Suggestion chips (delegated)
+      messagesEl.addEventListener('click', (e) => {
+        const chip = e.target.closest('.suggestion-chip');
+        if (chip) {
+          handleQuery(chip.dataset.q);
+        }
+      });
+
+      // Focus input on load
+      inputEl.focus();
+    })();
+  </script>
+</Layout>

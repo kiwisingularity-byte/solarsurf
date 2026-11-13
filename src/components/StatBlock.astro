@@ -1,0 +1,104 @@
+---
+// StatBlock.astro — Big number stats, cyber-surf style
+// No mascot, just confident typography
+---
+
+<section class="stats" id="numbers">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num">20<span class="stat-plus">+</span></div>
+        <div class="stat-label">YEARS FIXING BOARDS</div>
+        <div class="stat-sub">Cj's experience</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">5.0<span class="stat-plus">★</span></div>
+        <div class="stat-label">GOOGLE RATING</div>
+        <div class="stat-sub">23 verified reviews</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">1974</div>
+        <div class="stat-label">THE MOUNT'S ORIGINAL</div>
+        <div class="stat-sub">First surf shop in the Mount</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">2<span class="stat-plus">×</span></div>
+        <div class="stat-label">GENERATIONS</div>
+        <div class="stat-sub">Mount boards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--abyss) 0%, var(--deep) 100%);
+    border-top: 1px solid var(--midnight);
+    border-bottom: 1px solid var(--midnight);
+    position: relative;
+  }
+
+  .stats::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--cyan) 50%, transparent 100%);
+    opacity: 0.3;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 24px 16px;
+    border-left: 1px solid var(--midnight);
+  }
+  .stat:first-child { border-left: none; }
+
+  .stat-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--sun);
+    text-shadow: 0 0 24px var(--sun-glow);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-plus {
+    color: var(--cyan);
+    text-shadow: 0 0 16px var(--cyan-glow);
+    font-size: 0.7em;
+    margin-left: 4px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+
+  .stat-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 800px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+    .stat { border-left: none; }
+  }
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>

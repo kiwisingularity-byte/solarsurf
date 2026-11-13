@@ -1,0 +1,337 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Useful Links — Solar Surf · The Mount's Surf Repairs">
+  <!-- ============================================ -->
+  <!-- HERO                                        -->
+  <!-- ============================================ -->
+  <section class="links-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="section-tag">[ LINKS ] · LOCAL & LOVED</span>
+      <h1>USEFUL<br>LINKS<span class="dot">.</span></h1>
+      <p>Good local businesses we recommend — surf-related services, gear, and more around the Mount.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- LINKS LIST                                  -->
+  <!-- ============================================ -->
+  <section class="links-section">
+    <div class="container">
+
+      <!-- Surf Recovery & Health -->
+      <div class="links-category reveal">
+        <span class="category-tag">[ 01 ] · SURF RECOVERY &amp; HEALTH</span>
+        <div class="links-grid">
+          <a href="https://sunshinehealing.co.nz/" target="_blank" rel="noopener" class="link-card">
+            <span class="link-icon">💆</span>
+            <div class="link-info">
+              <h3>Sunshine Healing Physiotherapy</h3>
+              <p>Surf-informed physio focused on movement, strength, and flow.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Surf Shops & Gear -->
+      <div class="links-category reveal">
+        <span class="category-tag">[ 02 ] · SURF SHOPS &amp; GEAR</span>
+        <div class="links-grid">
+          <a href="https://www.surfline.com" target="_blank" rel="noopener" class="link-card">
+            <span class="link-icon">🌊</span>
+            <div class="link-info">
+              <h3>Surfline</h3>
+              <p>Surf reports, forecasts, and cam feeds — check the conditions before you paddle out.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+          <a href="mailto:mountmaunganui@me.com?subject=Useful%20Links%20-%20Add%20My%20Surf%20Shop" class="link-card">
+            <span class="link-icon">🛒</span>
+            <div class="link-info">
+              <h3>Add Your Surf Shop</h3>
+              <p>Know a great local surf shop? Get in touch and we'll add you to our links page.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Local Services -->
+      <div class="links-category reveal">
+        <span class="category-tag">[ 03 ] · LOCAL SERVICES</span>
+        <div class="links-grid">
+          <a href="mailto:mountmaunganui@me.com?subject=Useful%20Links%20-%20Add%20My%20Business" class="link-card">
+            <span class="link-icon">☕</span>
+            <div class="link-info">
+              <h3>Add Your Business</h3>
+              <p>We're building a directory of trusted local businesses. Contact us to be listed here.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Weather & Conditions -->
+      <div class="links-category reveal">
+        <span class="category-tag">[ 04 ] · WEATHER &amp; CONDITIONS</span>
+        <div class="links-grid">
+          <a href="https://www.metservice.com/marine/tides/mount-maunganui" target="_blank" rel="noopener" class="link-card">
+            <span class="link-icon">🌊</span>
+            <div class="link-info">
+              <h3>MetService Tides — Mount Maunganui</h3>
+              <p>Tide times for the Mount. Essential for planning your surf sessions.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+          <a href="https://www.metservice.com/marine/marine-forecasts/bay-of-plenty" target="_blank" rel="noopener" class="link-card">
+            <span class="link-icon">🌬️</span>
+            <div class="link-info">
+              <h3>MetService Marine Forecast</h3>
+              <p>Bay of Plenty marine forecast — wind, swell, and sea conditions.</p>
+            </div>
+            <span class="link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="links-cta reveal">
+        <span class="section-tag">[ 05 ] · WANT IN?</span>
+        <h2>BE LISTED HERE</h2>
+        <p>If you run a surf-related or local business and want to swap links, get in touch!</p>
+        <a href="mailto:mountmaunganui@me.com?subject=Useful%20Links%20Enquiry" class="btn btn-primary btn-lg">✉️ GET IN TOUCH</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ═══════════════════════════════════════════ */
+  /* HERO                                       */
+  /* ═══════════════════════════════════════════ */
+  .links-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--text);
+    border-bottom: 1px solid var(--midnight);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    opacity: 0.5;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, var(--abyss) 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 120px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    color: var(--text);
+    line-height: 0.95;
+    margin: 16px 0 24px;
+  }
+  .hero-content h1 .dot { color: var(--sun); text-shadow: 0 0 24px var(--sun-glow); }
+
+  .hero-content p {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+  }
+
+  .category-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+
+  /* ═══════════════════════════════════════════ */
+  /* LINKS LIST                                  */
+  /* ═══════════════════════════════════════════ */
+  .links-section {
+    padding: 100px 0;
+    background: var(--abyss);
+  }
+
+  .links-category {
+    margin-bottom: 64px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--deep);
+    border: 1px solid var(--midnight);
+    border-radius: 8px;
+    padding: 24px 28px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .link-card:hover {
+    border-color: var(--sun);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(255, 107, 26, 0.15);
+  }
+  .link-card:hover .link-arrow {
+    color: var(--sun);
+    transform: translateX(6px);
+  }
+
+  .link-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--abyss);
+    border: 1px solid var(--midnight);
+    border-radius: 4px;
+  }
+
+  .link-info { flex: 1; }
+
+  .link-info h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .link-info p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .link-arrow {
+    font-size: 1.3rem;
+    color: var(--cyan);
+    flex-shrink: 0;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  /* ═══════════════════════════════════════════ */
+  /* CTA                                         */
+  /* ═══════════════════════════════════════════ */
+  .links-cta {
+    text-align: center;
+    padding: 80px 32px;
+    border: 1px solid var(--midnight);
+    border-radius: 8px;
+    background: linear-gradient(180deg, var(--deep) 0%, var(--abyss) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .links-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--sun);
+    box-shadow: 0 0 12px var(--sun-glow);
+  }
+
+  .links-cta h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    margin: 16px 0 16px;
+  }
+
+  .links-cta p {
+    color: var(--text-dim);
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .btn-primary {
+    background: var(--sun);
+    color: var(--abyss) !important;
+    border-color: var(--sun);
+  }
+  .btn-primary:hover {
+    background: var(--sun-hot);
+    color: var(--abyss) !important;
+    box-shadow: 0 0 32px var(--sun-glow);
+    transform: translateY(-2px);
+  }
+  .btn-lg { padding: 22px 44px; font-size: 1.05rem; }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .links-grid { grid-template-columns: 1fr; }
+  }
+</style>

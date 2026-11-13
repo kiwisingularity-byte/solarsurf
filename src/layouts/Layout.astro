@@ -4,7 +4,7 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast, professional, affordable — since 1974.' } = Astro.props;
+const { title, description = "The Mount's surf repairs. Board repairs since 1974. 5.0★ · 23 reviews · a few days turnaround." } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,7 +13,7 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#0c4a6e" />
+  <meta name="theme-color" content="#050b15" />
   <link rel="canonical" href={Astro.url.href} />
   <title>{title}</title>
 
@@ -24,21 +24,66 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:site_name" content="Solar Surf" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Archivo Black (display) + Inter (body) + JetBrains Mono (accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+  <!-- Structured Data for LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Solar Surf Board Repairs",
+    "image": "https://solarsurf.co.nz/images/hero-action.jpg",
+    "telephone": "+64 27 5888 082",
+    "email": "mountmaunganui@me.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 8, 21 MacDonald Street",
+      "addressLocality": "Mount Maunganui",
+      "postalCode": "3116",
+      "addressCountry": "NZ"
+    },
+    "url": "https://solarsurf.co.nz",
+    "openingHours": "Mo-Su 09:30-16:00",
+    "priceRange": "$$",
+    "description": description,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "23"
+    }
+  })} />
 
   <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --deep: #0c4a6e;
-      --ocean: #0284c7;
-      --foam: #e0f2fe;
-      --sand: #fef3c7;
-      --sun: #f59e0b;
-      --sun-hot: #ea580c;
+      /* === Core dark cyber-surf palette === */
+      --abyss: #050b15;          /* deepest background */
+      --deep: #0a1628;            /* panel background */
+      --midnight: #0f1f3a;        /* elevated panels */
+      --foam: #0a1f33;            /* darkest accent */
+
+      /* === Neon accents (cyber-surf) === */
+      --sun: #ff6b1a;             /* primary CTA / accent — was #f59e0b */
+      --sun-hot: #ff4500;         /* hot hover */
+      --sun-glow: rgba(255, 107, 26, 0.5);
+      --cyan: #00f0ff;            /* electric cyan — wave / data */
+      --cyan-glow: rgba(0, 240, 255, 0.4);
+      --acid: #c6ff00;            /* acid green — highlight / data */
+      --magenta: #ff00aa;         /* glitch / hover */
+
+      /* === Text === */
+      --text: #e8f1ff;
+      --text-dim: #8aa0c0;
+      --text-muted: #5a7090;
+
+      /* === Legacy (kept for compatibility) === */
       --white: #ffffff;
       --gray-50: #f8fafc;
       --gray-100: #f1f5f9;
@@ -52,78 +97,132 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--gray-800);
+      color: var(--text);
+      background: var(--abyss);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    h1, h2, h3 {
-      font-family: 'Outfit', 'Inter', sans-serif;
-      line-height: 1.2;
+    /* Subtle scanline overlay for cyber feel — very low opacity */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 3px,
+        rgba(0, 240, 255, 0.015) 3px,
+        rgba(0, 240, 255, 0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
     }
 
-    a { color: var(--ocean); text-decoration: none; }
-    a:hover { color: var(--deep); }
+    h1, h2, h3, h4 {
+      font-family: 'Archivo Black', 'Inter', sans-serif;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    h1 { font-weight: 900; }
+    h2 { font-weight: 900; }
+
+    a { color: var(--cyan); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--sun); }
 
     .container {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
+
+    /* === Selection color (cyber) === */
+    ::selection { background: var(--sun); color: var(--abyss); }
+
+    /* === Scrollbar (subtle) === */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--abyss); }
+    ::-webkit-scrollbar-thumb { background: var(--midnight); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
       <a href="/" class="nav-logo">
-        <span class="nav-logo-icon">🏄</span>
-        <span>Solar Surf</span>
+        <span class="nav-logo-icon">◐</span>
+        <span class="nav-logo-text">SOLAR<span class="nav-logo-accent">/</span>SURF</span>
+        <span class="nav-logo-meta">EST. 1974</span>
       </a>
       <div class="nav-links">
-        <a href="/#services">Services</a>
-        <a href="/#story">Our Story</a>
-        <a href="/#reviews">Reviews</a>
-        <a href="/contact">Contact</a>
-        <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="/#services">SERVICES</a>
+        <a href="/#story">STORY</a>
+        <a href="/#work">WORK</a>
+        <a href="/#reviews">REVIEWS</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">CONTACT</a>
+        <a href="/links/">LINKS</a>
+        <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">IG ↗</a>
       </div>
-      <a href="/contact" class="nav-cta">Get a Quote</a>
+      <a href="/contact/" class="nav-cta">→ GET QUOTE</a>
       <button class="nav-toggle" aria-label="Menu" id="nav-toggle">☰</button>
     </div>
     <div class="nav-mobile" id="nav-mobile">
-      <a href="/#services">Services</a>
-      <a href="/#story">Our Story</a>
-      <a href="/#reviews">Reviews</a>
-      <a href="/contact">Contact</a>
-        <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 Instagram</a>
-      <a href="/contact" class="nav-cta">Get a Quote</a>
+      <a href="/#services">SERVICES</a>
+      <a href="/#story">STORY</a>
+      <a href="/#work">WORK</a>
+      <a href="/#reviews">REVIEWS</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/contact/">CONTACT</a>
+      <a href="/links/">LINKS</a>
+      <a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">IG ↗</a>
+      <a href="/contact/" class="nav-cta">→ GET QUOTE</a>
     </div>
   </nav>
 
   <slot />
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">🏄 Solar Surf</span>
-        <p>Quality board repairs since 1974.<br />Mount Maunganui, New Zealand.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="footer-logo-icon">◐</span>
+            <span>SOLAR<span class="footer-logo-accent">/</span>SURF</span>
+          </div>
+          <p class="footer-tagline">THE MOUNT'S ORIGINAL.<br>SINCE 1974.</p>
+          <p class="footer-sub">Board repairs for people who actually surf.</p>
+        </div>
+        <div class="footer-col">
+          <h4>QUICK LINKS</h4>
+          <a href="/#services">Services</a>
+          <a href="/#story">Our Story</a>
+          <a href="/#work">Our Work</a>
+          <a href="/#reviews">Reviews</a>
+          <a href="/contact/">Contact</a>
+          <a href="/links/">Useful Links</a>
+        </div>
+        <div class="footer-col">
+          <h4>FIND US</h4>
+          <p>Unit 8, 21 MacDonald St<br />Mount Maunganui 3116</p>
+          <p><a href="tel:+642****8082">027 5888 082</a></p>
+          <p><a href="mailto:mountmaunganui@me.com?subject=Surf%20Repair%20Enquiry">mountmaunganui@me.com</a></p>
+          <p><a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">@solarsurfnz ↗</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>HOURS</h4>
+          <p>7 days a week<br />09:30 – 16:00<br /><span style="font-size:0.75em;opacity:0.7">someone's usually here</span></p>
+          <p class="footer-note">Drop-offs welcome outside hours by arrangement.</p>
+        </div>
       </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <a href="/#services">Services</a>
-        <a href="/#story">Our Story</a>
-        <a href="/#reviews">Reviews</a>
-        <a href="/contact">Contact</a>
+      <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} SOLAR/SURF · MOUNT MAUNGANUI · NEW ZEALAND</p>
+        <p class="footer-coords">37.6487° S · 176.1625° E</p>
       </div>
-      <div class="footer-contact">
-        <h4>Find Us</h4>
-        <p>Unit 8, 21 MacDonald St<br />Mount Maunganui 3116</p>
-        <p><a href="tel:+64275888082">027 5888 082</a></p>
-        <p><a href="mailto:maunganui@me.com">maunganui@me.com</a></p>
-        <p><a href="https://www.instagram.com/solarsurfnz" target="_blank" rel="noopener">📸 @solarsurfnz</a></p>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; {new Date().getFullYear()} Solar Surf Board Repairs. All rights reserved.</p>
     </div>
   </footer>
 
@@ -135,7 +234,6 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
         mobile.classList.toggle('open');
         toggle.textContent = mobile.classList.contains('open') ? '✕' : '☰';
       });
-      // Close on link click
       mobile.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => {
           mobile.classList.remove('open');
@@ -143,165 +241,297 @@ const { title, description = 'Quality surfboard repairs in Mount Maunganui. Fast
         });
       });
     }
+
+    // Glitch effect on the logo every 8-12 seconds
+    const logo = document.querySelector('.nav-logo');
+    if (logo) {
+      function glitch() {
+        logo.classList.add('glitching');
+        setTimeout(() => logo.classList.remove('glitching'), 300);
+        setTimeout(glitch, 8000 + Math.random() * 4000);
+      }
+      setTimeout(glitch, 3000);
+    }
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
 
 <style>
+  /* === NAV === */
   .nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-100);
+    background: var(--abyss);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
   }
 
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 72px;
     gap: 24px;
   }
 
   .nav-logo {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-    color: var(--deep);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
   }
 
-  .nav-logo:hover { color: var(--ocean); }
+  .nav-logo-icon {
+    font-size: 1.6rem;
+    color: var(--sun);
+    text-shadow: 0 0 12px var(--sun-glow);
+  }
 
-  .nav-logo-icon { font-size: 1.5rem; }
+  .nav-logo-text { display: inline-block; }
+  .nav-logo-accent {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
+    margin: 0 2px;
+  }
+
+  .nav-logo-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-left: 8px;
+  }
+
+  .nav-logo:hover { color: var(--text); }
+
+  /* Glitch animation */
+  .nav-logo.glitching {
+    animation: glitch-skew 0.3s steps(2) infinite;
+  }
+  .nav-logo.glitching::before,
+  .nav-logo.glitching::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--abyss);
+  }
+  .nav-logo.glitching::before {
+    color: var(--cyan);
+    transform: translateX(-2px);
+    animation: glitch-clip-1 0.3s steps(2) infinite;
+  }
+  .nav-logo.glitching::after {
+    color: var(--magenta);
+    transform: translateX(2px);
+    animation: glitch-clip-2 0.3s steps(2) infinite;
+  }
+
+  @keyframes glitch-skew {
+    0% { transform: skew(0deg); }
+    20% { transform: skew(-2deg); }
+    40% { transform: skew(1deg); }
+    60% { transform: skew(0deg); }
+    80% { transform: skew(-1deg); }
+    100% { transform: skew(0deg); }
+  }
+  @keyframes glitch-clip-1 {
+    0% { clip-path: inset(0 0 0 0); }
+    25% { clip-path: inset(20% 0 60% 0); }
+    50% { clip-path: inset(60% 0 10% 0); }
+    75% { clip-path: inset(40% 0 30% 0); }
+    100% { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes glitch-clip-2 {
+    0% { clip-path: inset(0 0 0 0); }
+    25% { clip-path: inset(60% 0 20% 0); }
+    50% { clip-path: inset(10% 0 50% 0); }
+    75% { clip-path: inset(30% 0 40% 0); }
+    100% { clip-path: inset(0 0 0 0); }
+  }
 
   .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 28px;
   }
 
   .nav-links a {
-    color: var(--gray-700);
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.2s;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    transition: color 0.2s, text-shadow 0.2s;
   }
 
-  .nav-links a:hover { color: var(--ocean); }
+  .nav-links a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
+  }
 
   .nav-cta {
-    background: var(--ocean);
-    color: var(--white) !important;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: background 0.2s;
+    background: var(--sun);
+    color: var(--abyss) !important;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 transparent;
   }
 
-  .nav-cta:hover { background: var(--deep) !important; }
+  .nav-cta:hover {
+    background: var(--sun-hot);
+    color: var(--abyss) !important;
+    box-shadow: 0 0 24px var(--sun-glow);
+    transform: translateY(-1px);
+  }
 
   .nav-toggle {
     display: none;
     background: none;
-    border: none;
-    font-size: 1.5rem;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-size: 1.2rem;
+    padding: 8px 12px;
     cursor: pointer;
-    color: var(--gray-800);
   }
 
   .nav-mobile {
     display: none;
     flex-direction: column;
-    padding: 16px 24px 24px;
-    gap: 16px;
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-100);
+    padding: 20px 24px 28px;
+    gap: 18px;
+    background: var(--abyss);
+    border-bottom: 1px solid var(--cyan);
   }
-
   .nav-mobile.open { display: flex; }
-
   .nav-mobile a {
-    color: var(--gray-700);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
-    font-size: 1.1rem;
-    padding: 8px 0;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none; }
     .nav-toggle { display: block; }
+    .nav-logo-meta { display: none; }
   }
 
-  /* Footer */
+  /* === FOOTER === */
   .footer {
-    background: var(--gray-900);
-    color: var(--gray-50);
-    padding: 64px 0 0;
-    margin-top: 0;
+    background: linear-gradient(180deg, var(--abyss) 0%, #020610 100%);
+    color: var(--text-dim);
+    padding: 80px 0 0;
+    margin-top: 100px;
+    border-top: 1px solid var(--midnight);
   }
 
-  .footer-inner {
+  .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 56px;
   }
 
   .footer-logo {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-  }
-
-  .footer-brand p, .footer-contact p {
-    color: var(--gray-600);
-    font-size: 0.9rem;
-    margin-top: 12px;
-    line-height: 1.6;
-  }
-
-  .footer-contact a, .footer-links a {
-    color: var(--gray-600);
-    transition: color 0.2s;
-  }
-
-  .footer-contact a:hover, .footer-links a:hover {
-    color: var(--ocean);
-  }
-
-  .footer h4 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--white);
-    font-size: 1rem;
-  }
-
-  .footer-links {
     display: flex;
-    flex-direction: column;
+    align-items: baseline;
     gap: 8px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+  .footer-logo-icon { color: var(--sun); text-shadow: 0 0 12px var(--sun-glow); font-size: 1.5rem; }
+  .footer-logo-accent { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
+
+  .footer-tagline {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.85rem;
+    color: var(--sun);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 16px;
+    line-height: 1.3;
   }
 
-  .footer-links a { font-size: 0.9rem; }
+  .footer-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .footer-col p, .footer-col a {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .footer-col a:hover { color: var(--sun); }
+
+  .footer-note {
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+    margin-top: 8px;
+    font-style: italic;
+  }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 48px;
-    padding: 24px 0;
+    border-top: 1px solid var(--midnight);
+    padding: 28px 0;
     text-align: center;
-    font-size: 0.85rem;
-    color: var(--gray-600);
+  }
+  .footer-bottom p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .footer-coords {
+    margin-top: 4px;
+    color: var(--cyan) !important;
+    opacity: 0.6;
   }
 
-  @media (max-width: 768px) {
-    .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 540px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>

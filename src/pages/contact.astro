@@ -2,214 +2,308 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact — Solar Surf Board Repairs">
-  <!-- Contact Hero -->
+<Layout title="Contact — Solar Surf · The Mount's Surf Repairs">
+  <!-- ============================================ -->
+  <!-- HERO                                        -->
+  <!-- ============================================ -->
   <section class="contact-hero">
-    <div class="container">
-      <h1>Get In Touch</h1>
-      <p>Drop off your board or give us a call — we'll get you back in the water fast.</p>
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="section-tag">[ CONTACT ] · GET IN TOUCH</span>
+      <h1>DROP OFF<br>YOUR BOARD<span class="dot">.</span></h1>
+      <p>Or give us a call — we'll get you back in the water fast. 20+ years of fixing boards on the Mount.</p>
+      <div class="hero-actions">
+        <a href="mailto:mountmaunganui@me.com?subject=Board%20Repair%20Quote" class="btn btn-primary">→ EMAIL FOR A QUOTE</a>
+        <a href="tel:+642****8082" class="btn btn-ghost">📞 027 5888 082</a>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Content -->
+  <!-- ============================================ -->
+  <!-- CONTACT GRID                                -->
+  <!-- ============================================ -->
   <section class="contact-section">
-    <div class="container contact-grid">
-      <!-- Contact Form -->
-      <div class="contact-form-wrap">
-        <h2>Send a Message</h2>
-        <p class="form-sub">Tell us about your board and we'll get back to you with a quote.</p>
-        <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name" />
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Email + form block -->
+        <div class="contact-block reveal">
+          <span class="section-tag">[ 01 ] · SEND A MESSAGE</span>
+          <h2>EMAIL US</h2>
+          <p class="block-sub">Tell us about your board and we'll get back to you with a quote. Usually within a few hours.</p>
+          <a href="mailto:mountmaunganui@me.com?subject=Board%20Repair%20Quote" class="btn btn-primary btn-lg">✉️ EMAIL US</a>
+          <div class="email-direct">
+            <span class="email-label">OR WRITE DIRECTLY:</span>
+            <a href="mailto:mountmaunganui@me.com?subject=Board%20Repair%20Question" class="email-link">mountmaunganui@me.com</a>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com" />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="021 123 456" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">What needs fixing?</label>
-            <textarea id="message" name="message" rows="5" required placeholder="E.g. 6'2 shortboard with a crack on the bottom rail..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
+        </div>
 
-      <!-- Contact Details -->
-      <div class="contact-details">
-        <div class="detail-card">
-          <span class="detail-icon">📍</span>
-          <h3>Find Us</h3>
-          <p>Unit 8, 21 MacDonald Street<br/>Mount Maunganui 3116<br/>New Zealand</p>
-          <p class="detail-note">5 minutes from Omanu Beach</p>
-        </div>
-        <div class="detail-card">
-          <span class="detail-icon">📞</span>
-          <h3>Call Us</h3>
-          <p><a href="tel:+64275888082">027 5888 082</a></p>
-          <p class="detail-note">Text or call — we're happy to help</p>
-        </div>
-        <div class="detail-card">
-          <span class="detail-icon">✉️</span>
-          <h3>Email Us</h3>
-          <p><a href="mailto:maunganui@me.com">maunganui@me.com</a></p>
-          <p class="detail-note">We usually respond within a few hours</p>
-        </div>
-        <div class="detail-card">
-          <span class="detail-icon">🕐</span>
-          <h3>Hours</h3>
-          <p>Mon–Fri: 8am – 5pm<br/>Sat: 9am – 1pm<br/>Sun: Closed</p>
-          <p class="detail-note">Drop-offs welcome during hours</p>
+        <!-- Details -->
+        <div class="contact-details">
+          <div class="detail-card reveal">
+            <div class="detail-num">01</div>
+            <span class="detail-icon">📍</span>
+            <h3>FIND US</h3>
+            <p>Unit 8, 21 MacDonald Street<br/>Mount Maunganui 3116<br/>New Zealand</p>
+            <p class="detail-note">5 minutes from Omanu Beach</p>
+            <p class="detail-note">You can leave your board with Mike in Unit 9 if I'm out and I'll get back to you with a quote</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-num">02</div>
+            <span class="detail-icon">📞</span>
+            <h3>CALL US</h3>
+            <p><a href="tel:+642****8082">027 5888 082</a></p>
+            <p class="detail-note">Text or call — we're happy to help</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-num">03</div>
+            <span class="detail-icon">✉️</span>
+            <h3>EMAIL US</h3>
+            <p><a href="mailto:mountmaunganui@me.com?subject=Board%20Repair%20Question">mountmaunganui@me.com</a></p>
+            <p class="detail-note">We usually respond within a few hours</p>
+          </div>
+          <div class="detail-card reveal">
+            <div class="detail-num">04</div>
+            <span class="detail-icon">🕐</span>
+            <h3>HOURS</h3>
+            <p>7 days: usually 9:30am – 4pm</p>
+            <p class="detail-note">Pickups &amp; drop-offs 7 days to Mike in Unit 9.<br/>9:30am – 4pm (call to check if the surf's up 🏄‍♂️)</p>
+            <p class="detail-note">I'll always quote before I start work!</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Map -->
+  <!-- ============================================ -->
+  <!-- MAP                                          -->
+  <!-- ============================================ -->
   <section class="map-section">
     <div class="container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168!2d176.1625!3d-37.6487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s21+MacDonald+St+Mount+Maunganui!5e0!3m2!1sen!2snz!4v1"
-        width="100%"
-        height="400"
-        style="border:0; border-radius: 16px;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Solar Surf Board Repairs location on Google Maps">
-      </iframe>
+      <div class="section-head">
+        <span class="section-tag">[ 02 ] · WHERE TO FIND US</span>
+        <h2 class="section-title">COME VISIT</h2>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168!2d176.1625!3d-37.6487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s21+MacDonald+St+Mount+Maunganui!5e0!3m2!1sen!2snz!4v1"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Solar Surf Board Repairs location on Google Maps">
+        </iframe>
+      </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Contact Hero */
+  /* ═══════════════════════════════════════════ */
+  /* HERO                                       */
+  /* ═══════════════════════════════════════════ */
   .contact-hero {
-    background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
-    color: white;
-    padding: 80px 0 60px;
-    text-align: center;
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--text);
+    border-bottom: 1px solid var(--midnight);
   }
 
-  .contact-hero h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
+  /* Cyber grid background */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    opacity: 0.5;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, var(--abyss) 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 120px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    color: var(--text);
+    line-height: 0.95;
+    margin: 16px 0 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero-content h1 .dot { color: var(--sun); text-shadow: 0 0 24px var(--sun-glow); }
+
+  .hero-content p {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ═══════════════════════════════════════════ */
+  /* SECTION COMMONS                           */
+  /* ═══════════════════════════════════════════ */
+  .section-head {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--midnight);
+    position: relative;
+  }
+  .section-head::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--sun);
+    box-shadow: 0 0 12px var(--sun-glow);
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
     margin-bottom: 12px;
   }
 
-  .contact-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
+  .section-title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: var(--text);
   }
 
-  @media (max-width: 768px) {
-    .contact-hero { padding: 60px 0 40px; }
-    .contact-hero h1 { font-size: 2rem; }
+  .btn {
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid transparent;
   }
+  .btn-primary {
+    background: var(--sun);
+    color: var(--abyss) !important;
+    border-color: var(--sun);
+  }
+  .btn-primary:hover {
+    background: var(--sun-hot);
+    color: var(--abyss) !important;
+    box-shadow: 0 0 32px var(--sun-glow);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text) !important;
+    border-color: var(--cyan);
+  }
+  .btn-ghost:hover {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--cyan) !important;
+    box-shadow: 0 0 16px var(--cyan-glow);
+    transform: translateY(-2px);
+  }
+  .btn-lg { padding: 22px 44px; font-size: 1.05rem; }
 
-  /* Contact Grid */
+  /* ═══════════════════════════════════════════ */
+  /* CONTACT GRID                               */
+  /* ═══════════════════════════════════════════ */
   .contact-section {
-    padding: 64px 0;
-    background: var(--white);
+    padding: 100px 0;
+    background: var(--abyss);
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 48px;
-  }
-
-  /* Form */
-  .contact-form-wrap h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-    color: var(--gray-900);
-  }
-
-  .form-sub {
-    color: var(--gray-600);
-    margin-bottom: 24px;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-row {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 48px;
+    align-items: start;
   }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  .contact-block {
+    background: linear-gradient(180deg, var(--deep) 0%, var(--abyss) 100%);
+    border: 1px solid var(--midnight);
+    border-radius: 8px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--sun);
+    box-shadow: 0 0 12px var(--sun-glow);
   }
 
-  .form-group label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--gray-700);
+  .contact-block h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--text);
+    margin-bottom: 16px;
   }
 
-  .form-group input,
-  .form-group textarea {
-    padding: 12px 16px;
-    border: 2px solid var(--gray-100);
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
+  .block-sub {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .email-direct {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--midnight);
+  }
+  .email-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .email-link {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
-    color: var(--gray-800);
-    transition: border-color 0.2s;
-    background: var(--gray-50);
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan-glow);
   }
+  .email-link:hover { color: var(--sun); text-shadow: 0 0 8px var(--sun-glow); }
 
-  .form-group input:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--ocean);
-    background: white;
-  }
-
-  .form-group textarea { resize: vertical; }
-
-  .btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary {
-    background: var(--ocean);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: var(--deep);
-    transform: translateY(-1px);
-  }
-
-  @media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  /* Details */
+  /* Detail cards */
   .contact-details {
     display: flex;
     flex-direction: column;
@@ -217,50 +311,95 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .detail-card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: 14px;
-    padding: 20px;
+    position: relative;
+    background: var(--deep);
+    border: 1px solid var(--midnight);
+    border-radius: 8px;
+    padding: 32px 28px 28px;
+    transition: all 0.3s;
+  }
+  .detail-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-2px);
+  }
+
+  .detail-num {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
   }
 
   .detail-icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 6px var(--sun-glow));
   }
 
   .detail-card h3 {
+    font-family: 'Archivo Black', sans-serif;
     font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: var(--gray-900);
+    color: var(--cyan);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
   }
 
   .detail-card p {
     font-size: 0.95rem;
-    color: var(--gray-700);
-    line-height: 1.5;
+    color: var(--text);
+    line-height: 1.6;
   }
-
   .detail-card a {
-    color: var(--ocean);
+    color: var(--sun);
     font-weight: 600;
   }
+  .detail-card a:hover { color: var(--sun-hot); }
 
   .detail-note {
-    font-size: 0.85rem !important;
-    color: var(--gray-600) !important;
-    margin-top: 4px;
+    font-size: 0.82rem !important;
+    color: var(--text-muted) !important;
+    margin-top: 6px;
+    font-style: italic;
   }
 
-  /* Map */
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════════ */
+  /* MAP                                         */
+  /* ═══════════════════════════════════════════ */
   .map-section {
-    padding: 0 0 64px;
-    background: var(--white);
+    padding: 100px 0;
+    background: var(--deep);
+    border-top: 1px solid var(--midnight);
   }
 
-  .map-section iframe {
+  .map-frame {
+    border: 1px solid var(--midnight);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  .map-frame iframe {
     display: block;
     width: 100%;
+    filter: invert(0.92) hue-rotate(180deg) saturate(0.6);
   }
 </style>
